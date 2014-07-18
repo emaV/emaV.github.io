@@ -1,67 +1,281 @@
-<!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<!DOCTYPE HTML>
+<!--
+	Miniport 2.5 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<head>
+		<title>Emanuele Quinto</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/config.js"></script>
+		<script src="js/skel.min.js"></script>
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
 
-  <title>Emav.github.io</title>
-  <meta name="description" content="And here we are.">
+<script type="text/javascript">
+// https://wiki.base22.com/pages/viewpage.action?pageId=72942000
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+    function postContactToGoogle(){
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var feed = $('#feed').val();
+        if ((name !== "") && (email !== "") && ((feed !== "") && (validateEmail(email)))) {
+            $.ajax({
+                url: "https://docs.google.com/i1nOCR8bQ-VMHtCW2-SkRtjLx6qcmTwfsS5n4sTVbdO2U/formResponse",
+                data: {"entry.1117518427" : name, "entry.151542557" : email, "entry.1452943771": feed},
+                type: "POST",
+                dataType: "xml",
+                statusCode: {
+                    0: function (){
+ 
+                        $('#name').val("");
+                        $('#email').val("");
+                        $('#feed').val("");
+                        //Success message
+                    },
+                    200: function (){
+                        $('#name').val("");
+                        $('#email').val("");
+                        $('#feed').val("");
+                        //Success Message
+                    }
+                }
+            });
+     }
+        else {
+          if(!validateEmail(email)) {
+            alert("Please enter a correct email");
+          }
+            //Error message
+        }
+    }
+</script>
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-</head>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
+	</head>
+	<body>
 
-<body>
+		<!-- Nav -->
+			<nav id="nav">
+				<ul class="container">
+					<li><a href="#top">Top</a></li>
+					<li><a href="#work">Work</a></li>
+					<li><a href="#portfolio">Portfolio</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</nav>
 
-  <div class="wrapper">
-    <header>
-      <h1 class="title">Emav.github.io</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">And here we are.</p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/emaV" class="code">View Emav.github.io on GitHub</a>
-        </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h3>
-<a name="welcome-to-my-github-pages" class="anchor" href="#welcome-to-my-github-pages"><span class="octicon octicon-link"></span></a>Welcome to my GitHub Pages.</h3>
+		<!-- Home -->
+			<div class="wrapper wrapper-style1 wrapper-first">
+				<article class="container" id="top">
+					<div class="row">
+						<div class="4u">
+							<span class="me image image-full"><img src="images/me.jpg" alt="" /></span>
+						</div>
+						<div class="8u">
+							<header>
+								<h1>Hi. I'm <strong>Emanuele Quinto</strong>.</h1>
+							</header>
+              <p>My mother used to say to me, "Elwood" - she always called me Elwood - "In this world, Elwood, you must be oh-so smart, or oh-so pleasant." For years I was smart. I recommend pleasant, and you may quote me.</p>
+							<a href="#work" class="button button-big">Learn about what I do</a>
+						</div>
+					</div>
+				</article>
+			</div>
 
-<blockquote>
-<p>My mother used to say to me, "Elwood" - she always called me Elwood -
-"In this world, Elwood, you must be oh-so smart, or oh-so pleasant."
-For years I was smart. I recommend pleasant, and you may quote me.</p>
-</blockquote>
-        </article>
-      </div>
-    </div>
-    <footer>
-      <div class="owner">
+		<!-- Work -->
+			<div class="wrapper wrapper-style2">
+				<article id="work">
+					<header>
+						<h2>I design and build amazing things.</h2>
+						<span>Mit der Dummheit kämpfen Götter selbst vergebens.</span>
+					</header>
+					<div class="container">
+						<div class="row">
+							<div class="4u">
+								<section class="box box-style1">
+									<span class="fa featured fa-file-o"></span>
+									<h3>Resume</h3>
+									<p>Check my <a href="https://www.dropbox.com/s/jih3rkbyi8obd7n/CV_2014.en.pdf">CV</a>.</p>
+								</section>
+							</div>
+							<div class="4u">
+								<section class="box box-style1">
+									<span class="fa featured fa-drupal"></span>
+									<h3>Drupal</h3>
+									<p>Proudly using <a href="https://www.drupal.org/user/24864">Drupal</a> since 2005.</p>
+								</section>
+							</div>
+							<div class="4u">
+								<section class="box box-style1">
+									<span class="fa featured fa-git"></span>
+									<h3>Github</h3>
+									<p>Feel free to checkout my <a href="http://github.com/emaV">code</a>.</p>
+								</section>
+							</div>
+						</div>
+					</div>
+					<footer>
+						<p></p>
+						<a href="#portfolio" class="button button-big">See some of my recent work</a>
+					</footer>
+				</article>
+			</div>
 
-      <p><a href="https://github.com/emaV" class="avatar"><img src="https://1.gravatar.com/avatar/2245258d62d302a1eb9ce79c5bb24f3f?d=https%3A%2F%2Fidenticons.github.com%2F38d01308caa1a8b9ba0f51ce17f2769e.png&amp;r=x&amp;s=60" width="48" height="48"/></a>View <a href="https://github.com/emaV">emaV</a> on <a href="https://www.github.com">GitHub</a></p>
+		<!-- Portfolio -->
+			<div class="wrapper wrapper-style3">
+				<article id="portfolio">
+					<header>
+						<h2>Selected works.</h2>
+						<span>Since 2005 proudly working with Drupal.</span>
+					</header>
+					<div class="container">
+						<div class="row">
+							<div class="12u">
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<article class="box box-style2">
+									<a href="http://www.humanitarianresponse.info/" class="image image-full"><img src="images/portfolio01.jpg" alt="" /></a>
+									<h3><a href="http://www.humanitarianresponse.info/">OCHA Humanitarian Response</a></h3>
+									<p>The HumanitarianResponse.info platform is provided to the humanitarian community as a means to aid in coordination of operational information and related activities.</p>
+								</article>
+							</div>
+							<div class="4u">
+								<article class="box box-style2">
+									<a href="http://www.sfsu.edu" class="image image-full"><img src="images/portfolio02.jpg" alt="" /></a>
+									<h3><a href="http://www.sfsu.edu">SFSU groups site</a></h3>
+									<p>Open Atrium based for intranet groups @ SFSU.</p>
+								</article>
+							</div>
+							<div class="4u">
+								<article class="box box-style2">
+									<a href="http://www.sfsu.edu" class="image image-full"><img src="images/portfolio03.jpg" alt="" /></a>
+									<h3><a href="http://www.sfsu.edu">SFSU sites</a></h3>
+									<p>SFSU sites.</p>
+								</article>
+							</div>
+						</div>
+						<div class="row">
+							<div class="4u">
+								<article class="box box-style2">
+									<a href="http://www.wfp.org" class="image image-full"><img src="images/portfolio04.jpg" alt="" /></a>
+									<h3><a href="http://www.wfp.org">WFP main site</a></h3>
+									<p>World Food Programme main site.</p>
+								</article>
+							</div>
+							<div class="4u">
+								<article class="box box-style2">
+									<a href="http://fr.wfp.org" class="image image-full"><img src="images/portfolio05.jpg" alt="" /></a>
+									<h3><a href="http://fr.wfp.org">fr.wfp.org</a></h3>
+									<p>WFP multilingual sites.</p>
+								</article>
+							</div>
+							<div class="4u">
+								<article class="box box-style2">
+									<a href="http://web.archive.org/web/20060613114151/http://www.fighthunger.org/" class="image image-full"><img src="images/portfolio06.jpg" alt="" /></a>
+									<h3><a href="http://web.archive.org/web/20060613114151/http://www.fighthunger.org/">WFP Fight Hunger</a></h3>
+									<p>An annual worldwide demonstration across the globe called Walk the World.</p>
+								</article>
+							</div>
+						</div>
+					</div>
+					<footer>
+						<p>Check my github for more code.</p>
+						<a href="#contact" class="button button-big">Get in touch with me</a>
+					</footer>
+				</article>
+			</div>
 
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/emaV/emaV.github.io/tarball/master" class="tar">tar</a><a href="https://github.com/emaV/emaV.github.io/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
+		<!-- Contact -->
+			<div class="wrapper wrapper-style4">
+				<article id="contact" class="container small">
+					<header>
+						<h2>Want to hire me? Get in touch!</h2>
+						<span>Drop me a note it's free!</span>
+					</header>
+					<div>
+						<div class="row">
+							<div class="12u">
+								<form id="callus" target="_self" onsubmit="" action="javascript: postContactToGoogle()">
+									<div>
+										<div class="row half">
+											<div class="6u">
+												<input type="text" name="name" id="name" placeholder="Name" />
+											</div>
+											<div class="6u">
+												<input type="text" name="email" id="email" placeholder="Email" />
+											</div>
+										</div>
+										<div class="row half">
+											<div class="12u">
+												<textarea name="feed" id="feed" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+                        <button id="send" type="submit" class="button form-button-submit">Contact Me </button>
+                        <!--
+												<a href="#" class="button form-button-submit">Send Message</a>
+												<a href="#" class="button button-alt form-button-reset">Clear Form</a>
+                        -->
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="row">
+							<div class="12u">
+								<hr />
+								<h3>Find me on ...</h3>
+								<ul class="social">
+									<li class="twitter"><a href="http://twitter.com/emaV" class="fa fa-twitter"><span>Twitter</span></a></li>
+									<li class="linkedin"><a href="http://it.linkedin.com/in/emanuelequinto" class="fa fa-linkedin"><span>LinkedIn</span></a></li>
+									<li class="googleplus"><a href="https://plus.google.com/+EmanueleQuinto" class="fa fa-google-plus"><span>Google+</span></a></li>
+									<li class="github"><a href="https://github.com/emaV" class="fa fa-github"><span>Github</span></a></li>
+									<!--
+									<li class="rss"><a href="#" class="fa fa-rss"><span>RSS</span></a></li>
+									<li class="instagram"><a href="#" class="fa fa-instagram"><span>Instagram</span></a></li>
+									<li class="foursquare"><a href="#" class="fa fa-foursquare"><span>Foursquare</span></a></li>
+									<li class="skype"><a href="#" class="fa fa-skype"><span>Skype</span></a></li>
+									<li class="soundcloud"><a href="#" class="fa fa-soundcloud"><span>Soundcloud</span></a></li>
+									<li class="youtube"><a href="#" class="fa fa-youtube"><span>YouTube</span></a></li>
+									<li class="blogger"><a href="#" class="fa fa-blogger"><span>Blogger</span></a></li>
+									<li class="flickr"><a href="#" class="fa fa-flickr"><span>Flickr</span></a></li>
+									<li class="vimeo"><a href="#" class="fa fa-vimeo"><span>Vimeo</span></a></li>
+									-->
+								</ul>
+								<hr />
+							</div>
+						</div>
+					</div>
+					<footer>
+						<ul id="copyright">
+							<li>CC/GPL 2014 Emanuele Quinto</li>
+						</ul>
+					</footer>
+				</article>
+			</div>
 
-  
-</body>
+
+	</body>
 </html>
