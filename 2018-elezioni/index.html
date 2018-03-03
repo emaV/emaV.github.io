@@ -1,0 +1,314 @@
+<html lang="en" class="">
+<head>
+  <meta property="og:title" content="Schedina 2018" />
+  <meta property="og:description" content="ELEZIONI POLITICHE 2018 - The wisdom of the crowd" />;
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://www.dropbox.com/s/s3ol94ysqabc08i/preview.png?raw=1"/>
+  <meta property="og:image:width" content="714"/>
+  <meta property="og:image:height" content="702"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<style class="cp-pen-styles">/* sch numero */
+@import url('https://fonts.googleapis.com/css?family=Saira|Saira+Extra+Condensed');
+
+* {
+  font-family: 'Saira Extra Condensed', sans-serif;
+  background-image : url(http://api.thumbr.it/whitenoise-600x200.png?background=f8faebff&noise=6c702d&density=17&opacity=15)
+}
+
+div#main {
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+table#sch-head {
+  border-collapse: collapse;
+}
+
+
+#sch-head-num {
+  text-align: center;
+  border: 5px solid #444;
+  padding: 5px
+}
+#sch-head-num-conc {
+
+}
+#sch-head-num-num {
+  font-size: 5em;
+  line-height: 0.75em;
+  color: #ff0000;
+  font-weight:800;
+}
+#sch-head-toto {
+  padding:5px;
+  padding-left: 1em;
+  text-align: center;
+  border-bottom: 5px solid #444;
+}
+#sch-head-toto img {
+  height: 4em;
+ /* margin-bottom: -10px;*/
+}
+
+#sch-data{
+  font-family: 'Saira', sans-serif;
+  margin: 0.25em 2em;
+}
+
+
+/* sch table */
+table#sch {
+  border-collapse: collapse;
+}
+#sch .sc-n {
+  text-align:right
+}
+#sch .sc-part {
+  text-align:left
+}
+#sch th, #sch td {
+  padding: 5px;
+}
+#sch thead th.sc-n,
+#sch thead th.sc-part,
+#sch thead th.sc-perc {
+   border-bottom: thin solid;
+}
+#sch  th.sc-part, #sch  th.sc-perc {
+   border-top: thin solid;
+}
+
+#sch td.sc-part,  #sch th.sc-part{
+  border-left: thin solid;
+  border-right: thin solid;
+}
+#sch th.sc-perc {
+  border-right: thin solid;
+}
+#sch td.sc-perc {
+  border-right: thin solid;
+  border-bottom: 1px dotted;
+}
+#sch .group-last td {
+   border-bottom: 1px dotted;
+}
+#sch .group-last td.sc-perc {
+   border-bottom: 2px solid;
+}
+#sch .sch-last td.sc-part, #sch .sch-last td.sc-perc {
+      border-bottom: thick solid;
+}
+
+#sch input {
+  border: 0;
+  text-align: right;
+  font-size: 1em;
+}
+#sch input:hover, #sch input:focus {
+  background: white;
+}
+
+#sch-submit {
+  font-family: 'Saira', sans-serif;
+  margin: 0.25em 2em;
+}
+
+button#submit-form {
+  font-size: 2em;
+}
+
+tr#sch-ricevuta {
+  font-family: Saira, sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#sch-codice {
+  text-decoration: underline;
+}
+</style></head><body>
+<div id="main">
+
+<form id="schedina">
+  <table id="sch-head">
+    <tbody><tr>
+      <td id="sch-head-num">
+        <div id="sch-head-num-conc">CONCORSO</div>
+        <div id="sch-head-num-num">18</div>
+      </td>
+      <td id="sch-head-toto">
+        <img src="https://www.dropbox.com/s/v2trcpxerfu9dwu/totovoto.png?raw=1">
+        <br>
+        <span>"AL SERVIZIO DEI CITTADINI"</span>
+      </td>
+      <td>
+        <span style="background-color:#f00"></span>
+      </td>
+    </tr>
+  </tbody></table>
+  <div id="sch-data">
+    <span>ELEZIONI DEL 4-3-2018</span>
+  </div>
+
+  <table id="sch">
+    <thead>
+      <tr>
+        <th class="sc-n">N.</th>
+        <th class="sc-part">Partito</th>
+        <th class="sc-perc">Concorso XVIII legislatura</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="sc-n">1</td><td class="sc-part">Potere al Popolo</td><td class="sc-perc"><input id="p01" name="p01" tabindex="1"><span class="perc">%</span></td></tr>
+      <tr class="group-last"><td class="sc-n">2</td><td class="sc-part">Liberi e Uguali</td><td class="sc-perc"><input id="p02" name="p02" tabindex="2"><span class="perc">%</span></td></tr>
+      <tr><td class="sc-n">3</td><td class="sc-part">PD</td><td class="sc-perc"><input id="p03" name="p03" tabindex="3"><span class="perc">%</span></td></tr>
+      <tr><td class="sc-n">4</td><td class="sc-part">+Europa</td><td class="sc-perc"><input id="p04" name="p04" tabindex="4"><span class="perc">%</span></td></tr>
+      <tr><td class="sc-n">5</td><td class="sc-part">Civica Popolare - Lorenzin</td><td class="sc-perc"><input id="p05" name="p05" tabindex="5"><span class="perc">%</span></td></tr>
+      <tr class="group-last"><td class="sc-n">6</td><td class="sc-part">Italia-Europa Insieme</td><td class="sc-perc"><input id="p06" name="p06" tabindex="6"><span class="perc">%</span></td></tr>
+      <tr><td class="sc-n">7</td><td class="sc-part">Forza Italia</td><td class="sc-perc"><input id="p07" name="p07" tabindex="7"><span class="perc">%</span></td></tr>
+      <tr><td class="sc-n">8</td><td class="sc-part">Lega - Salvini</td><td class="sc-perc"><input id="p08" name="p08" tabindex="8"><span class="perc">%</span></td></tr>
+      <tr><td class="sc-n">9</td><td class="sc-part">Fratelli d'Italia</td><td class="sc-perc"><input id="p09" name="p09" tabindex="9"><span class="perc">%</span></td></tr>
+      <tr class="group-last"><td class="sc-n">10</td><td class="sc-part">Noi con l'Italia</td><td class="sc-perc"><input id="p10" name="p10" tabindex="10"><span class="perc">%</span></td></tr>
+      <tr class="group-last"><td class="sc-n">11</td><td class="sc-part">Movimento 5 Stelle</td><td class="sc-perc"><input id="p11" name="p11" tabindex="11"><span class="perc">%</span></td></tr>
+      <tr class="group-last"><td class="sc-n">12</td><td class="sc-part">Altri</td><td class="sc-perc"><input id="p12" name="p12" tabindex="12"><span class="perc">%</span></td></tr>
+      <tr class="sch-last"><td class="sc-n">13</td><td class="sc-part">Affluenza</td><td class="sc-perc"><input id="p13" name="p13" tabindex="13"><span class="perc">%</span></td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td></td>
+        <td>Il tuo nick/nome</td>
+        <td><input id="name" name="name" tabindex="14"></td>
+      </tr>
+      <tr id="sch-ricevuta">
+        <td colspan="3">
+          Conserva questo codice come ricevuta: <span id="sch-codice"></span>
+          <input id="ricevuta" name="ricevuta" type=hidden readonly>
+        </td>
+      </tr>
+      <tr id="sch-submit">
+        <td></td>
+        <td class="sc-sum">
+          <span id="sch-sum">Totale: <span id="sch-tot"></span></span>
+        </td>
+        <td class="sc-submit">
+          <button type="submit" id="submit-form" tabindex="15">Gioca la colonna!</button>
+        </td>
+     </tr>
+  </table>
+</form>
+</div>
+<script>
+
+String.prototype.hashCode = function() {
+  var hash = 0, i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr   = this.charCodeAt(i);
+    hash  = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+};
+
+
+var submitted = false,
+  valid = false,
+  $form = $('form#schedina'),
+  url = 'https://script.google.com/macros/s/AKfycby0VPD9IKu6SRNtveRVuMOSFEeEF8QuvFIHGzNvQJWDE1ZFtkpO/exec'
+
+$("#sch-submit .sc-submit button").hide();
+$("#sch-ricevuta").hide();
+
+var validateColonna = function() {
+  var tot = 0;
+  var ricevuta = $("input#name").val();
+  $('.sc-perc input').each(function(i) {
+    if(i!=12) tot += this.value * 1;
+    ricevuta += this.value;
+    console.log(i + " " + this.value);
+  })
+  $("#sch-tot").html(tot + "%");
+  // Add timestamp to ricevuta
+  var ts = Math.round((new Date()).getTime() / 1000);
+  ricevuta += "." + ts;
+  ricevuta = ((ricevuta.hashCode()) >>> 0).toString(16);
+  $("#ricevuta").val(ricevuta);
+  $("#sch-codice").html(ricevuta);
+
+  if( tot == 100 && !(!$("input#name").val()) ) {
+    valid = true;
+    $("#sch-submit .sc-submit button").show();
+  }
+  else {
+    valid = false;
+    $("#sch-submit .sc-submit button").hide();
+  }
+}
+
+$('#sch input').on('change', validateColonna);
+
+$.fn.serializeObject = function() {
+   var o = {};
+   var a = this.serializeArray();
+   $.each(a, function() {
+       if (o[this.name]) {
+           if (!o[this.name].push) {
+               o[this.name] = [o[this.name]];
+           }
+           o[this.name].push(this.value || '');
+       } else {
+           o[this.name] = this.value || '';
+       }
+   });
+   return o;
+};
+
+function afterSubmission() {
+  $("#sch-submit").hide();
+  $("#sch-ricevuta").show();
+}
+
+$('#submit-form').on('click', function(e) {
+  var data = $form.serializeObject();
+  e.preventDefault();
+  if(!submitted && valid) {
+    var jqxhr = $.ajax({
+      url: url,
+      method: "GET",
+      dataType: "json",
+      data: $form.serializeObject(),
+      complete: afterSubmission
+    })
+    submitted = true;
+
+  }
+})
+
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if( (event.keyCode == 13) ) {
+      if( event.target.id != "submit-form") {
+        var tabIndex = event.target.tabIndex;
+        if( tabIndex == 14) validateColonna();
+        $('[tabIndex=' + (tabIndex + 1) + ']')[0].focus();
+        event.preventDefault();
+        return false;
+      }
+    }
+    if( event.keyCode == 38 ) {
+      var tabIndex = event.target.tabIndex;
+      if( tabIndex > 1) $('[tabIndex=' + (tabIndex - 1) + ']')[0].focus();
+    }
+    if( event.keyCode == 40 ) {
+      var tabIndex = event.target.tabIndex;
+      if( tabIndex < 15) $('[tabIndex=' + (tabIndex + 1) + ']')[0].focus();
+    }
+  });
+});
+
+//# sourceURL=schedina.js
+</script>
+</body></html>
