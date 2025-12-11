@@ -24,23 +24,7 @@
       --radius-xl: 20px;
     }
 
-    /* Nordic tech minimal (Theme A) */
-    body[data-theme="nordic"] {
-      --bg-page: radial-gradient(circle at top left, #e0ecff 0, #f5f7fa 45%, #f5f5f5 100%);
-      --bg: #F9FAFB;
-      --bg-alt: #FFFFFF;
-      --text: #1F2937;
-      --muted: #6B7280;
-      --accent: #3B82F6;
-      --accent-soft: rgba(59, 130, 246, 0.10);
-      --border: #E5E7EB;
-      --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
-      --radius-lg: 12px;
-      --radius-xl: 18px;
-      --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
+    
         /* Theme B – Blue (less pastel) */
     body[data-theme="blue"] {
       --bg-page: radial-gradient(circle at top left, #dce7ff 0, #eef2ff 45%, #f2f4f8 100%);
@@ -58,23 +42,7 @@
       --font-heading: 'Inter', system-ui, sans-serif;
     }
 
-        /* Theme C – Teal (cool, not pastel) */
-    body[data-theme="teal"] {
-      --bg-page: radial-gradient(circle at top left, #ccfbf1 0, #e0fdfa 40%, #f0fdfa 100%);
-      --bg: #ecfdf5;
-      --bg-alt: #ffffff;
-      --text: #0f3f3a;
-      --muted: #0d6b62;
-      --accent: #0d9488;
-      --accent-soft: rgba(13, 148, 136, 0.12);
-      --border: #99f6e4;
-      --shadow-soft: 0 10px 24px rgba(0, 80, 70, 0.15);
-      --radius-lg: 12px;
-      --radius-xl: 18px;
-      --font-body: 'Inter', system-ui, sans-serif;
-      --font-heading: 'Inter', system-ui, sans-serif;
-    }
-
+        
     * {
       box-sizing: border-box;
     }
@@ -161,36 +129,7 @@
       gap: 1rem;
     }
 
-    .theme-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    .theme-toggle-label {
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.7rem;
-    }
-
-    .theme-toggle button {
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      background: rgba(255, 255, 255, 0.9);
-      padding: 0.1rem 0.45rem;
-      font-size: 0.72rem;
-      cursor: pointer;
-      color: var(--muted);
-    }
-
-    .theme-toggle button.active {
-      background: var(--accent);
-      border-color: transparent;
-      color: #fff;
-    }
-
+    
     /* Sections */
     section {
       padding: 3.5rem 0;
@@ -600,7 +539,11 @@
 
     .thumb-media {
       background: linear-gradient(135deg, #dbeafe, #fef3c7);
-      height: 140px;
+      display: block;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.25s ease-out;
     }
 
     .thumb-body {
@@ -755,7 +698,7 @@
     }
   </style>
 </head>
-<body data-theme="nordic">
+<body>
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo">
@@ -769,12 +712,7 @@
           <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
         </nav>
-        <div class="theme-toggle" aria-label="Theme switcher">
-          <span class="theme-toggle-label">Theme</span>
-          <button type="button" data-theme-btn="nordic">A</button>
-          <button type="button" data-theme-btn="blue">B</button>
-          <button type="button" data-theme-btn="teal">C</button>
-        </div>
+        
       </div>
     </div>
   </header>
@@ -926,7 +864,7 @@
 
           <div class="slider-track" data-slider-track>
             <article class="thumb-card slide-card">
-              <div class="thumb-media"></div>
+              <img class="thumb-media" src="images/portfolio01.jpg" alt="UN OCHA"></img>
               <div class="thumb-body">
                 <h3><a href="https://www.humanitarianresponse.info" target="_blank" rel="noreferrer">OCHA HumanitarianResponse.info</a></h3>
                 <p>Operational information platform supporting coordination across humanitarian actors.</p>
@@ -935,7 +873,7 @@
             </article>
 
             <article class="thumb-card slide-card">
-              <div class="thumb-media"></div>
+              <img src="images/portfolio04.jpg" alt="UN WFP" class="thumb-media"></img>
               <div class="thumb-body">
                 <h3><a href="https://www.wfp.org" target="_blank" rel="noreferrer">World Food Programme – wfp.org</a></h3>
                 <p>Multilingual corporate site launched in 10+ languages with improved performance and editorial tools.</p>
@@ -944,7 +882,7 @@
             </article>
 
             <article class="thumb-card slide-card">
-              <div class="thumb-media"></div>
+              <img src="images/portfolio06.jpg" alt="UN WFP Fight Hunger" class="thumb-media"></img>
               <div class="thumb-body">
                 <h3>FightHunger.org</h3>
                 <p>Fundraising platform supporting hundreds of global events and multi-language online campaigns.</p>
@@ -953,7 +891,7 @@
             </article>
 
             <article class="thumb-card slide-card">
-              <div class="thumb-media"></div>
+              <img src="images/portfolio02.jpg" alt="SFSU" class="thumb-media"></img>
               <div class="thumb-body">
                 <h3>San Francisco State University portals</h3>
                 <p>University portal and Drupal ecosystem serving students, faculty, and staff across 100+ sites.</p>
@@ -1059,12 +997,9 @@
         <div class="contact-cta">
           <a href="mailto:your.email@example.com" class="btn btn-primary">Email me</a>
           <a href="#" class="btn btn-secondary">Connect on LinkedIn</a>
+          <a href="https://github.com/emav" target="_blank" rel="noreferrer" class="btn btn-secondary">GitHub</a>
         </div>
-        <div class="social-links">
-          <a href="https://github.com/emav" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://x.com" target="_blank" rel="noreferrer">X / Twitter</a>
-          <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
-        </div>
+        
       </div>
     </section>
   </main>
@@ -1161,51 +1096,7 @@
       });
     })();
 
-    // Theme switcher
-    (function () {
-      var THEME_KEY = 'eq-theme';
-      var defaultTheme = 'nordic';
-      var body = document.body;
-      var stored = null;
-      try {
-        stored = window.localStorage ? window.localStorage.getItem(THEME_KEY) : null;
-      } catch (e) {}
-      var current = stored || body.getAttribute('data-theme') || defaultTheme;
-      body.setAttribute('data-theme', current);
-
-      var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-theme-btn]'));
-
-      function updateActiveButtons() {
-        buttons.forEach(function (btn) {
-          if (btn.getAttribute('data-theme-btn') === current) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-      }
-
-      function setTheme(next) {
-        current = next;
-        body.setAttribute('data-theme', current);
-        updateActiveButtons();
-        try {
-          if (window.localStorage) {
-            window.localStorage.setItem(THEME_KEY, current);
-          }
-        } catch (e) {}
-      }
-
-      buttons.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var t = btn.getAttribute('data-theme-btn');
-          if (!t) return;
-          setTheme(t);
-        });
-      });
-
-      updateActiveButtons();
-    })();
+    
   </script>
 </body>
 </html>
