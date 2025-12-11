@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <title>Emanuele Quinto – Solution Architect & Web Technology Leader</title>
+  <style>
+    :root {
+      /* default fallback values (will be overridden by body[data-theme]) */
+      --font-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-heading: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+      --bg-page: radial-gradient(circle at top left, #e0ecff 0, #f5f7fa 45%, #f5f5f5 100%);
+      --bg: #f5f7fa;
+      --bg-alt: #ffffff;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.08);
+      --border: #e1e5ee;
+      --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+      --radius-lg: 14px;
+      --radius-xl: 20px;
+    }
+
+    /* Nordic tech minimal (Theme A) */
+    body[data-theme="nordic"] {
+      --bg-page: radial-gradient(circle at top left, #e0ecff 0, #f5f7fa 45%, #f5f5f5 100%);
+      --bg: #F9FAFB;
+      --bg-alt: #FFFFFF;
+      --text: #1F2937;
+      --muted: #6B7280;
+      --accent: #3B82F6;
+      --accent-soft: rgba(59, 130, 246, 0.10);
+      --border: #E5E7EB;
+      --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+      --radius-lg: 12px;
+      --radius-xl: 18px;
+      --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+        /* Theme B – Blue (less pastel) */
+    body[data-theme="blue"] {
+      --bg-page: radial-gradient(circle at top left, #dce7ff 0, #eef2ff 45%, #f2f4f8 100%);
+      --bg: #ffffff;
+      --bg-alt: #f3f6ff;
+      --text: #1e293b;
+      --muted: #475569;
+      --accent: #1d4ed8;
+      --accent-soft: rgba(29, 78, 216, 0.10);
+      --border: #c8d2ea;
+      --shadow-soft: 0 10px 26px rgba(0, 20, 60, 0.10);
+      --radius-lg: 12px;
+      --radius-xl: 18px;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-heading: 'Inter', system-ui, sans-serif;
+    }
+
+        /* Theme C – Teal (cool, not pastel) */
+    body[data-theme="teal"] {
+      --bg-page: radial-gradient(circle at top left, #ccfbf1 0, #e0fdfa 40%, #f0fdfa 100%);
+      --bg: #ecfdf5;
+      --bg-alt: #ffffff;
+      --text: #0f3f3a;
+      --muted: #0d6b62;
+      --accent: #0d9488;
+      --accent-soft: rgba(13, 148, 136, 0.12);
+      --border: #99f6e4;
+      --shadow-soft: 0 10px 24px rgba(0, 80, 70, 0.15);
+      --radius-lg: 12px;
+      --radius-xl: 18px;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-heading: 'Inter', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--bg-page);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header / Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(245, 247, 250, 0.9);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.7);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0.25rem;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      font-weight: 650;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      margin-left: 0.5rem;
+      font-size: 0.7rem;
+      color: var(--accent);
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .main-nav a {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .main-nav a:hover {
+      background: rgba(148, 163, 184, 0.16);
+      color: var(--text);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .theme-toggle-label {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+    }
+
+    .theme-toggle button {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.1rem 0.45rem;
+      font-size: 0.72rem;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .theme-toggle button.active {
+      background: var(--accent);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    /* Sections */
+    section {
+      padding: 3.5rem 0;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-weight: 650;
+      font-family: var(--font-heading);
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 3vw, 2.6rem);
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+
+    .section-intro {
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    .section-intro p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 4.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-main p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 34rem;
+    }
+
+    .hero-subtitle {
+      margin-top: 0.6rem;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .hero-cta {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.15rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.08s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-secondary:hover {
+      background: #fff;
+      text-decoration: none;
+    }
+
+    .hero-side {
+      padding: 1.25rem 1.25rem 1.35rem;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(241, 245, 255, 0.98));
+      border: 1px solid rgba(209, 213, 219, 0.8);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-side-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #3730a3;
+      border: 1px solid rgba(129, 140, 248, 0.6);
+      white-space: nowrap;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px dashed rgba(148, 163, 184, 0.6);
+      padding-top: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    /* At a Glance */
+    .at-a-glance {
+      padding-top: 0;
+    }
+
+    .card-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.15rem;
+      font-size: 0.9rem;
+    }
+
+    .info-card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .info-card p {
+      color: var(--muted);
+      margin: 0.3rem 0;
+    }
+
+    .info-highlight {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    /* Slider: generic layout, arrows, and dots */
+    .slider {
+      position: relative;
+      margin: 0 -0.5rem;
+      padding: 0.25rem 0.5rem 0;
+    }
+
+    .slider-track {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding: 0.5rem;
+      padding-bottom: 0.75rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .slider-track::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .slider-track::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.6);
+      border-radius: 999px;
+    }
+
+    .slide-card {
+      scroll-snap-align: start;
+      flex: 0 0 80%;
+      max-width: 80%;
+    }
+
+    @media (min-width: 640px) {
+      .slide-card {
+        flex: 0 0 55%;
+        max-width: 55%;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .slide-card {
+        flex: 0 0 40%;
+        max-width: 40%;
+      }
+    }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #4b5563;
+      cursor: pointer;
+      padding: 0;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+    }
+
+    .slider-nav:hover {
+      background: #ffffff;
+    }
+
+    .slider-nav.prev {
+      left: 0.4rem;
+    }
+
+    .slider-nav.next {
+      right: 0.4rem;
+    }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.4rem;
+      margin: 0.25rem 0 0.25rem;
+    }
+
+    .slider-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      border: none;
+      padding: 0;
+      background: rgba(148, 163, 184, 0.5);
+      cursor: pointer;
+    }
+
+    .slider-dot.active {
+      width: 16px;
+      background: #2563eb;
+    }
+
+    @media (max-width: 600px) {
+      .slider-nav {
+        top: auto;
+        bottom: -0.4rem;
+        transform: none;
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+      }
+    }
+
+    /* Jumbotron bands for key sections */
+    .jumbotron {
+      padding: 4rem 0;
+    }
+
+    .jumbotron-primary {
+      background: radial-gradient(circle at top left, #e0ecff 0, #eef2ff 45%, #e5e7eb 100%);
+      border-top: 1px solid rgba(209, 213, 219, 0.8);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.8);
+    }
+
+    .jumbotron-soft {
+      background: rgba(255, 255, 255, 0.9);
+      border-top: 1px solid rgba(226, 232, 240, 0.9);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .jumbotron .section-intro {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .jumbotron .section-intro h2 {
+      font-size: 1.5rem;
+    }
+
+    .jumbotron .section-intro p {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 34rem;
+    }
+
+    .jumbotron .card-grid,
+    .jumbotron .thumb-grid {
+      margin-top: 1.5rem;
+    }
+
+    /* Highlights / Case Studies */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.3rem;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .project-card p {
+      color: var(--muted);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.35rem;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 0.16rem 0.5rem;
+      border-radius: 999px;
+      background: #f3f4ff;
+      color: #4b5563;
+    }
+
+    .text-link {
+      font-size: 0.8rem;
+      margin-top: 0.2rem;
+    }
+
+    /* Portfolio thumbnails */
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .thumb-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .thumb-media {
+      background: linear-gradient(135deg, #dbeafe, #fef3c7);
+      height: 140px;
+    }
+
+    .thumb-body {
+      padding: 0.9rem 1rem 1rem;
+    }
+
+    .thumb-body h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .thumb-body p {
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    /* Experience timeline */
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-left: 1px solid var(--border);
+    }
+
+    .timeline li {
+      position: relative;
+      padding-left: 1.5rem;
+      padding-bottom: 1.2rem;
+    }
+
+    .timeline li:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -5px;
+      top: 0.25rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    }
+
+    .timeline-year {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-body h3 {
+      font-size: 0.95rem;
+    }
+
+    .timeline-body p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+    }
+
+    /* How I Work */
+    .pill-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .pill-list li {
+      font-size: 0.8rem;
+      padding: 0.26rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.16);
+      color: #374151;
+    }
+
+    /* Contact */
+    .contact {
+      padding-bottom: 3.5rem;
+    }
+
+    .contact p {
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .contact-cta {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .social-links {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .social-links a {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(209, 213, 219, 0.9);
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      background: #fff;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid rgba(209, 213, 219, 0.8);
+      padding: 1.25rem 0 1.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .header-right {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-side {
+        order: -1;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+    }
+  </style>
+</head>
+<body data-theme="nordic">
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        Emanuele Quinto <span>Solution Architect</span>
+      </div>
+      <div class="header-right">
+        <nav class="main-nav">
+          <a href="#top">Top</a>
+          <a href="#highlights">Highlights</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="theme-toggle" aria-label="Theme switcher">
+          <span class="theme-toggle-label">Theme</span>
+          <button type="button" data-theme-btn="nordic">A</button>
+          <button type="button" data-theme-btn="blue">B</button>
+          <button type="button" data-theme-btn="teal">C</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="top" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-main">
+          <h1>Hi, I'm Emanuele Quinto.</h1>
+          <p class="hero-subtitle">Solution Architect &amp; Web Technology Leader based in Copenhagen.</p>
+          <p>
+            I design and build secure, scalable web and cloud solutions for international organisations, with a focus on
+            Drupal platforms, DevSecOps, and application migration to Azure and AWS.
+          </p>
+          <div class="hero-cta">
+            <a href="#" class="btn btn-primary">Download CV (PDF)</a>
+            <a href="#contact" class="btn btn-secondary">Contact me</a>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="hero-side-header">
+            <span>Profile snapshot</span>
+            <span>25+ yrs</span>
+          </div>
+          <div class="hero-tags">
+            <span class="tag">Cloud &amp; DevSecOps</span>
+            <span class="tag">UN &amp; NGOs</span>
+            <span class="tag">Drupal ecosystems</span>
+            <span class="tag">AI initiatives</span>
+            <span class="tag">Copenhagen-based</span>
+          </div>
+          <div class="hero-note">
+            Since 2021 I have been living and working in Denmark with my family, contributing to global digital
+            initiatives from Copenhagen.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- At a Glance -->
+    <section class="at-a-glance">
+      <div class="container card-row">
+        <article class="info-card">
+          <div class="info-highlight">Experience</div>
+          <h3>25+ years in web &amp; cloud</h3>
+          <p>Leading projects from concept to production across UN agencies, universities, NGOs, and startups.</p>
+        </article>
+        <article class="info-card">
+          <div class="info-highlight">Global scope</div>
+          <h3>Three continents</h3>
+          <p>Hands-on work in Europe, North America, and international field operations with diverse teams.</p>
+        </article>
+        <article class="info-card">
+          <div class="info-highlight">Current focus</div>
+          <h3>Solution architecture</h3>
+          <p>Application portfolio consolidation, DevSecOps standards, and secure cloud hosting for critical platforms.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Selected impact / case studies -->
+    <section id="highlights" class="jumbotron jumbotron-primary">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Selected impact</h2>
+          <p>A few examples of recent work, focusing on architecture, migration, and secure delivery.</p>
+        </div>
+
+        <div class="slider" data-slider>
+          <button class="slider-nav prev" type="button" aria-label="Previous" data-slide-prev>&lsaquo;</button>
+
+          <div class="slider-track" data-slider-track>
+            <article class="project-card slide-card">
+              <div class="project-meta">UNHCR · Solution Architecture</div>
+              <h3>Cloud migration of internal applications</h3>
+              <p>
+                Planned and executed the migration of multiple internal applications from on-premise hosting to Azure and
+                AWS, decommissioning legacy environments while minimising business disruption and reducing hosting costs.
+              </p>
+              <div class="chip-row">
+                <span class="chip">Azure &amp; AWS</span>
+                <span class="chip">Application portfolio</span>
+                <span class="chip">Cost optimisation</span>
+              </div>
+            </article>
+
+            <article class="project-card slide-card">
+              <div class="project-meta">UNHCR · Governance</div>
+              <h3>DevSecOps standards &amp; web policies</h3>
+              <p>
+                Researched and authored DevSecOps standards and web development &amp; hosting guidelines adopted by the
+                Architecture Review Board, providing concrete principles for secure, consistent solution delivery.
+              </p>
+              <div class="chip-row">
+                <span class="chip">DevSecOps</span>
+                <span class="chip">Architecture principles</span>
+                <span class="chip">Governance</span>
+              </div>
+            </article>
+
+            <article class="project-card slide-card">
+              <div class="project-meta">UNHCR · Service delivery</div>
+              <h3>SSL certificate service redesign</h3>
+              <p>
+                Centralised and redesigned the SSL certificate procurement process, negotiating improved terms and
+                introducing automation to reduce turnaround time, cost, and operational risk.
+              </p>
+              <div class="chip-row">
+                <span class="chip">Security</span>
+                <span class="chip">Process redesign</span>
+                <span class="chip">Vendor management</span>
+              </div>
+            </article>
+
+            <article class="project-card slide-card">
+              <div class="project-meta">UNHCR · Innovation</div>
+              <h3>AI adoption initiatives</h3>
+              <p>
+                Spearheaded early initiatives in AI-assisted workflows, evaluating tools such as Claude and ChatGPT to
+                support knowledge work and data analysis in a secure, compliant way.
+              </p>
+              <div class="chip-row">
+                <span class="chip">AI evaluation</span>
+                <span class="chip">Change management</span>
+                <span class="chip">Knowledge work</span>
+              </div>
+            </article>
+          </div>
+
+          <button class="slider-nav next" type="button" aria-label="Next" data-slide-next>&rsaquo;</button>
+
+          <div class="slider-dots" data-slider-dots></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio thumbnails -->
+    <section id="portfolio" class="jumbotron jumbotron-soft">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Selected Drupal &amp; web projects</h2>
+          <p>A snapshot of public-facing platforms I have designed, led, or supported.</p>
+        </div>
+
+        <div class="slider" data-slider>
+          <button class="slider-nav prev" type="button" aria-label="Previous" data-slide-prev>&lsaquo;</button>
+
+          <div class="slider-track" data-slider-track>
+            <article class="thumb-card slide-card">
+              <div class="thumb-media"></div>
+              <div class="thumb-body">
+                <h3><a href="https://www.humanitarianresponse.info" target="_blank" rel="noreferrer">OCHA HumanitarianResponse.info</a></h3>
+                <p>Operational information platform supporting coordination across humanitarian actors.</p>
+                <p class="project-meta">UN OCHA · Drupal · Integration</p>
+              </div>
+            </article>
+
+            <article class="thumb-card slide-card">
+              <div class="thumb-media"></div>
+              <div class="thumb-body">
+                <h3><a href="https://www.wfp.org" target="_blank" rel="noreferrer">World Food Programme – wfp.org</a></h3>
+                <p>Multilingual corporate site launched in 10+ languages with improved performance and editorial tools.</p>
+                <p class="project-meta">UN WFP · Web technology lead</p>
+              </div>
+            </article>
+
+            <article class="thumb-card slide-card">
+              <div class="thumb-media"></div>
+              <div class="thumb-body">
+                <h3>FightHunger.org</h3>
+                <p>Fundraising platform supporting hundreds of global events and multi-language online campaigns.</p>
+                <p class="project-meta">UN WFP · Drupal · Fundraising</p>
+              </div>
+            </article>
+
+            <article class="thumb-card slide-card">
+              <div class="thumb-media"></div>
+              <div class="thumb-body">
+                <h3>San Francisco State University portals</h3>
+                <p>University portal and Drupal ecosystem serving students, faculty, and staff across 100+ sites.</p>
+                <p class="project-meta">SFSU · Portal developer</p>
+              </div>
+            </article>
+          </div>
+
+          <button class="slider-nav next" type="button" aria-label="Next" data-slide-next>&rsaquo;</button>
+
+          <div class="slider-dots" data-slider-dots></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience snapshot -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Experience snapshot</h2>
+          <p>A brief overview of my journey across organisations, sectors, and continents.</p>
+        </div>
+
+        <ul class="timeline">
+          <li>
+            <span class="timeline-dot"></span>
+            <div class="timeline-year">2015 – Present · Copenhagen &amp; global</div>
+            <div class="timeline-body">
+              <h3>UNHCR – Senior Web Technology Specialist / Solution Architect</h3>
+              <p>
+                Engineering support for major web applications, cloud migration of internal platforms, DevSecOps
+                standards, and technical governance for web hosting and security.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline-dot"></span>
+            <div class="timeline-year">2008 – 2014 · Rome · San Francisco</div>
+            <div class="timeline-body">
+              <h3>UN WFP · UN FAO · San Francisco State University</h3>
+              <p>
+                Web technology lead and portal developer for large-scale Drupal ecosystems, multilingual sites, and
+                higher-education platforms.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline-dot"></span>
+            <div class="timeline-year">2003 – 2008 · Italy</div>
+            <div class="timeline-body">
+              <h3>Founder &amp; editor · Consultant · Community technology lead</h3>
+              <p>
+                Founded and directed a local magazine, led web projects for NGOs and businesses, and modernised
+                technology for a youth community centre.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline-dot"></span>
+            <div class="timeline-year">Before 2003</div>
+            <div class="timeline-body">
+              <h3>Academic &amp; early engineering roles</h3>
+              <p>
+                Research and teaching in physics and environmental engineering, scientific consulting, and early software
+                development experience.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- How I work -->
+    <section class="how-i-work">
+      <div class="container">
+        <div class="section-intro">
+          <h2>How I work</h2>
+          <p>
+            My leadership style is collaborative and consensus-driven. I aim to create an environment where teams feel
+            supported, empowered, and able to contribute openly, with clear architecture principles and a strong focus on
+            security.
+          </p>
+        </div>
+        <ul class="pill-list">
+          <li>Collaborative &amp; consensus-driven leadership</li>
+          <li>Coaching and mentoring developers</li>
+          <li>Architecture principles &amp; governance</li>
+          <li>Secure-by-design mindset</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-intro">
+          <h2>Contact</h2>
+          <p>
+            I am open to roles in solution architecture, web platforms, and cloud transformation in the Copenhagen area
+            or in hybrid/remote setups. If you think my profile could be a good match, I would be happy to hear from you.
+          </p>
+        </div>
+        <div class="contact-cta">
+          <a href="mailto:your.email@example.com" class="btn btn-primary">Email me</a>
+          <a href="#" class="btn btn-secondary">Connect on LinkedIn</a>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/emav" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://x.com" target="_blank" rel="noreferrer">X / Twitter</a>
+          <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2014–2025 Emanuele Quinto – Content under Creative Commons, code under GPL.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Slider with dots
+    (function () {
+      var sliders = document.querySelectorAll('[data-slider]');
+      if (!sliders.length) return;
+
+      sliders.forEach(function (slider) {
+        var track = slider.querySelector('[data-slider-track]');
+        var prev = slider.querySelector('[data-slide-prev]');
+        var next = slider.querySelector('[data-slide-next]');
+        var dotsContainer = slider.querySelector('[data-slider-dots]');
+        if (!track) return;
+
+        var slides = Array.prototype.slice.call(track.querySelectorAll('.slide-card'));
+        if (!slides.length) return;
+
+        var dots = [];
+        var currentIndex = 0;
+
+        function getSlideWidth() {
+          var first = slides[0];
+          if (!first) return track.clientWidth || 300;
+          var rect = first.getBoundingClientRect();
+          return rect.width + 16; // approximate gap (card + gap)
+        }
+
+        function updateDots() {
+          dots.forEach(function (dot, i) {
+            if (i === currentIndex) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        }
+
+        function scrollToIndex(index) {
+          var maxIndex = slides.length - 1;
+          currentIndex = Math.max(0, Math.min(maxIndex, index));
+          var amount = getSlideWidth();
+          track.scrollTo({ left: currentIndex * amount, behavior: 'smooth' });
+          updateDots();
+        }
+
+        // Build dots
+        if (dotsContainer) {
+          slides.forEach(function (_, i) {
+            var dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            dot.addEventListener('click', function () {
+              scrollToIndex(i);
+            });
+            dotsContainer.appendChild(dot);
+            dots.push(dot);
+          });
+        }
+
+        if (prev) {
+          prev.addEventListener('click', function () {
+            scrollToIndex(currentIndex - 1);
+          });
+        }
+
+        if (next) {
+          next.addEventListener('click', function () {
+            scrollToIndex(currentIndex + 1);
+          });
+        }
+
+        // Update active dot on manual scroll (drag / touch)
+        track.addEventListener('scroll', function () {
+          var width = getSlideWidth();
+          if (!width) return;
+          var approxIndex = Math.round(track.scrollLeft / width);
+          var maxIndex = slides.length - 1;
+          approxIndex = Math.max(0, Math.min(maxIndex, approxIndex));
+          if (approxIndex !== currentIndex) {
+            currentIndex = approxIndex;
+            updateDots();
+          }
+        });
+      });
+    })();
+
+    // Theme switcher
+    (function () {
+      var THEME_KEY = 'eq-theme';
+      var defaultTheme = 'nordic';
+      var body = document.body;
+      var stored = null;
+      try {
+        stored = window.localStorage ? window.localStorage.getItem(THEME_KEY) : null;
+      } catch (e) {}
+      var current = stored || body.getAttribute('data-theme') || defaultTheme;
+      body.setAttribute('data-theme', current);
+
+      var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-theme-btn]'));
+
+      function updateActiveButtons() {
+        buttons.forEach(function (btn) {
+          if (btn.getAttribute('data-theme-btn') === current) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+
+      function setTheme(next) {
+        current = next;
+        body.setAttribute('data-theme', current);
+        updateActiveButtons();
+        try {
+          if (window.localStorage) {
+            window.localStorage.setItem(THEME_KEY, current);
+          }
+        } catch (e) {}
+      }
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var t = btn.getAttribute('data-theme-btn');
+          if (!t) return;
+          setTheme(t);
+        });
+      });
+
+      updateActiveButtons();
+    })();
+  </script>
+</body>
+</html>
